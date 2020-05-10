@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'crispy_forms',
+    'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -64,6 +65,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # socail_authentication
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -132,3 +136,20 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#social Authentication
+# ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    
+]
+SOCIAL_AUTH_FACEBOOK_KEY = '1392299574290610'
+SOCIAL_AUTH_FACEBOOK_SECRET = '7872c7d86a166af51c9f2d36b47e69b1'
+# SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+# .................Github....................
+SOCIAL_AUTH_GITHUB_KEY = 'f41f454150bf0ad3b2d6'
+SOCIAL_AUTH_GITHUB_SECRET = '313862e581c1584a6ab201a9bbd8f226a069b7b2'
